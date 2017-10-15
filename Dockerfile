@@ -60,4 +60,5 @@ RUN	chown www-data:www-data . -R && \
 # When the image becomes container, it will run by default the line below upon 
 # "docker run" invocation.
 
-CMD	/etc/init.d/nginx start && /usr/sbin/php-fpm7.0  --fpm-config /etc/php/7.0/fpm/php-fpm.conf -g /run/php/php7.0-fpm.pid -F
+CMD	/etc/init.d/nginx start && \
+	/usr/sbin/php-fpm7.0  --fpm-config /etc/php/7.0/fpm/php-fpm.conf -g /run/php/php7.0-fpm.pid -F
