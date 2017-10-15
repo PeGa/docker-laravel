@@ -27,7 +27,8 @@ RUN	apt install -y \
 	php7.0-mbstring \
 	php7.0-mysql 
 
-RUN	wget https://raw.githubusercontent.com/composer/getcomposer.org/1b137f8bf6db3e79a38a5bc45324414a6b1f9df2/web/installer -O - -q | php -- --quiet
+RUN	wget https://raw.githubusercontent.com/composer/getcomposer.org/1b137f8bf6db3e79a38a5bc45324414a6b1f9df2/web/installer -O - -q | php -- --quiet && \
+	mv /tmp/composer.phar /usr/local/bin/
 
 # PHP doesn't create its own /run/php directory! Working it around.
 
@@ -45,9 +46,15 @@ RUN	rm -rf /var/www/html && \
 
 # Setting up Laravel environment
 
-RUN	cd /var/www/html && \
+WORKDIR	/var/www/html
+
+	# Composer needs full access to the repository and doesn't want to be run as root.
+RUN	chown www-data:www-data . -R && \
+	composer install && \
 	su www-data -c "php artisan key:generate" && \
-	chown www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache -R
+	# Allows writing only on public directories
+	chown root:root . -R && \
+	chown www-data:www-data storage bootstrap/cache -R
 
 # When the image becomes container, it will run by default the line below upon 
 # "docker run" invocation.
