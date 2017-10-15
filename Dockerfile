@@ -27,6 +27,8 @@ RUN	apt install -y \
 	php7.0-mbstring \
 	php7.0-mysql 
 
+RUN	wget https://raw.githubusercontent.com/composer/getcomposer.org/1b137f8bf6db3e79a38a5bc45324414a6b1f9df2/web/installer -O - -q | php -- --quiet
+
 # PHP doesn't create its own /run/php directory! Working it around.
 
 RUN	mkdir -p /run/php
@@ -35,6 +37,17 @@ RUN	mkdir -p /run/php
 
 ADD	build/virtualhost.conf /etc/nginx/sites-available/default
 ADD	build/php-pool-www.conf /etc/php/7.0/fpm/pool.d/www.conf
+
+# Cloning latest laravel source from official repo
+
+RUN	rm -rf /var/www/html && \
+	cd git clone https://github.com/laravel/laravel /var/www/html
+
+# Setting up Laravel environment
+
+RUN	cd /var/www/html && \
+	su www-data -c "php artisan key:generate" && \
+	chown www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache -R
 
 # When the image becomes container, it will run by default the line below upon 
 # "docker run" invocation.
