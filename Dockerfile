@@ -41,7 +41,7 @@ ADD	build/php-pool-www.conf /etc/php/7.0/fpm/pool.d/www.conf
 # Cloning latest laravel source from official repo
 
 RUN	rm -rf /var/www/html && \
-	cd git clone https://github.com/laravel/laravel /var/www/html
+	git clone https://github.com/laravel/laravel /var/www/html
 
 # Setting up Laravel environment
 
