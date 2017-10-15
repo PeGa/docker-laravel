@@ -36,7 +36,7 @@ RUN	mkdir -p /run/php
 
 # Adding custom configurations to Nginx and PHP
 
-ADD	build/virtualhost.conf /etc/nginx/sites-available/default
+ADD	build/nginx-block.conf /etc/nginx/sites-available/default
 ADD	build/php-pool-www.conf /etc/php/7.0/fpm/pool.d/www.conf
 
 # Cloning latest laravel source from official repo
