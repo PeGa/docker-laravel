@@ -50,8 +50,8 @@ WORKDIR	/var/www/html
 
 	# Composer needs full access to the repository and doesn't want to be run as root.
 RUN	chown www-data:www-data . -R && \
-	su www-data -c "composer install" && \
-	su www-data -c "php artisan key:generate" && \
+	su www-data -s /bin/bash -c "composer install" && \
+	su www-data -s /bin/bash -c "php artisan key:generate" && \
 	# Allows writing only on public directories
 	chown root:root . -R && \
 	chown www-data:www-data storage bootstrap/cache -R
