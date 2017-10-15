@@ -1,11 +1,10 @@
 FROM debian:stretch
 MAINTAINER PeGa! <dev@pega.sh>
 
-WORKDIR	/tmp/
-
 # Setting up dependencies and system tools
 
-RUN	apt update && \
+RUN	cd /tmp && \
+	apt update && \
 	apt install git wget -y && \
 	git clone https://github.com/pega/server-setup && \
 	cd server-setup/debian-stretch/scripts/ && \
@@ -42,6 +41,7 @@ RUN	apt update && \
 # Setting up Laravel environment
 #
 	# Composer needs full access to the repository and doesn't want to be run as root.
+	cd /var/www/html && \
 	chown www-data:www-data . -R && \
 	mv .env.example .env && \
 	su www-data -s /bin/bash -c "composer install" && \
