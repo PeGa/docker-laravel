@@ -53,8 +53,8 @@ RUN	cd /tmp && \
 #
 # Adding custom configurations to Nginx and PHP
 #
-ADD	build/nginx-block.conf /etc/nginx/sites-available/default
-ADD	build/php-pool-www.conf /etc/php/7.0/fpm/pool.d/www.conf
+ADD	build/config/nginx-block.conf /etc/nginx/sites-available/default
+ADD	build/config/php-pool-www.conf /etc/php/7.0/fpm/pool.d/www.conf
 
 # Establishing working dir to app directory
 
