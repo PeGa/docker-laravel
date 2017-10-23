@@ -7,9 +7,9 @@ ADD build/scripts/* /tmp/
 # install-web-services-dependencies.sh
 # setup-laravel-env.sh
 
-RUN 	/tmp/scripts/base-setup.sh && \
-	install-web-services-dependencies.sh && \
-	setup-laravel-env.sh
+RUN 	/tmp/base-setup.sh && \
+	/tmp/install-web-services-dependencies.sh && \
+	/tmp/setup-laravel-env.sh
 
 # Adding custom configurations to Nginx and PHP
 
