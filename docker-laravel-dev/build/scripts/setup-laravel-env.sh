@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Cloning latest laravel source from official repo
+
 rm -rf /var/www/html
 git clone https://github.com/laravel/laravel /var/www/html
 
