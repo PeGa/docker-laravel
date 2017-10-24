@@ -1,11 +1,19 @@
 FROM debian:stretch
 MAINTAINER PeGa! <dev@pega.sh>
 
-ADD build/scripts/* /tmp/
+# - Main / Contrib / Non-free repositories
+# - stretch-backports enabled
+# - (Disabled) Docker repositories
 
-# base-setup.sh
-# install-web-services-dependencies.sh
-# setup-laravel-env.sh
+ADD	build/config/repos/apt/* /etc/apt/
+
+# Adds external scripts for setup and configuration:
+#
+# - base-setup.sh
+# - install-web-services-dependencies.sh
+# - setup-laravel-env.sh
+
+ADD	build/scripts/* /tmp/
 
 RUN 	/tmp/base-setup.sh && \
 	/tmp/install-web-services-dependencies.sh && \
@@ -15,7 +23,6 @@ RUN 	/tmp/base-setup.sh && \
 
 ADD	build/config/services/nginx-block.conf /etc/nginx/sites-available/default
 ADD	build/config/services/php-pool-www.conf /etc/php/7.0/fpm/pool.d/www.conf
-ADD	build/config/repos/apt/* /etc/apt/
 
 # Establishing working dir to app directory
 
