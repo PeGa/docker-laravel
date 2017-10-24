@@ -8,11 +8,7 @@ packageList="
 wget
 lsb-release
 apt-transport-https
-apt-utils
-aptitude
-curl
-pkg-config
-man-db
+gnupg
 "
 apt update
 apt full-upgrade -y

@@ -3,6 +3,7 @@
 # Definition of required tools and helpers for development
 
 packageList="
+git
 apt-file
 apt-transport-https
 apt-utils
