@@ -46,9 +46,6 @@ vim
 whois
 "
 
-cd /tmp 
-apt full-upgrade -y
-
 # Remember, percona-sever repositories are already installed!
 
 apt install -y $packageList

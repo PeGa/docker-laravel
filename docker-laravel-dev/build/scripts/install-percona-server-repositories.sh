@@ -4,8 +4,22 @@
 # the required values in sources.list, so we're going to install the official repositories
 # first of all in the whole setup process.
 
+packageList="
+wget
+lsb-release
+apt-transport-https
+apt-utils
+aptitude
+curl
+pkg-config
+man-db
+"
 apt update
-apt install git wget lsb-release -y
+apt full-upgrade -y
+
+apt install $packageList -y
+
 cd /tmp/
+
 wget https://repo.percona.com/apt/percona-release_0.1-4.$(lsb_release -sc)_all.deb
-dpkg -i percona-release_0.1-4.$(lsb_release -sc)_all.deb
+dpkg -i /tmp/percona-release_0.1-4.$(lsb_release -sc)_all.deb
