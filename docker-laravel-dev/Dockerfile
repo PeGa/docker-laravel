@@ -16,7 +16,7 @@ ADD	build/config/repos/apt/* /etc/apt/
 
 ADD	build/scripts/* /tmp/
 
-# We can't install percona-server repositories before in the process without hardcoding
+# We can't install percona-server repositories earlier in the process without hardcoding
 # the required values in sources.list, so we're going to install the official repositories
 # first of all in the whole setup process.
 
