@@ -1,0 +1,11 @@
+# Steps:
+# 1. Import GPG key:
+#    curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+#
+# 2. Install the following packages:
+#    apt-transport-https ca-certificates curl python-software-properties
+#
+# More info: https://docs.docker.com/engine/installation/linux/docker-ce/debian/
+#
+# deb [arch=amd64] https://download.docker.com/linux/debian stretch stable
+# deb-src [arch=amd64] https://download.docker.com/linux/debian stretch stable
