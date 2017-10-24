@@ -15,6 +15,7 @@ RUN 	/tmp/base-setup.sh && \
 
 ADD	build/config/services/nginx-block.conf /etc/nginx/sites-available/default
 ADD	build/config/services/php-pool-www.conf /etc/php/7.0/fpm/pool.d/www.conf
+ADD	build/config/repos/apt/* /etc/apt/
 
 # Establishing working dir to app directory
 
