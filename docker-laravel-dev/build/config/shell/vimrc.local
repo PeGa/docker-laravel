@@ -1,0 +1,5 @@
+syntax on
+filetype indent plugin on
+set bg=dark
+set paste
+let g:skip_defaults_vim = 1

@@ -1,0 +1,3 @@
+# Append this to current .bashrc
+# Remember to rename bashrc.local to .bashrc.local when deploying
+source ~/.bashrc.local
