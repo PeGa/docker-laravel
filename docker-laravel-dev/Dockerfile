@@ -9,13 +9,19 @@ ADD	build/config/repos/apt/* /etc/apt/
 
 # Adds external scripts for setup and configuration:
 #
+# - install-percona-server-repositories.sh
 # - base-setup.sh
 # - install-web-services-dependencies.sh
 # - setup-laravel-env.sh
 
 ADD	build/scripts/* /tmp/
 
-RUN 	/tmp/base-setup.sh && \
+# We can't install percona-server repositories before in the process without hardcoding
+# the required values in sources.list, so we're going to install the official repositories
+# first of all in the whole setup process.
+
+RUN 	/tmp/install-percona-server-repositories.sh && \
+	/tmp/base-setup.sh && \
 	/tmp/install-web-services-dependencies.sh && \
 	/tmp/setup-laravel-env.sh
 

@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# PHP 7.0 and related libs
+# nginx-extras
+# composer
+
 # cd to /tmp so we can grab composer.phar at a predictable location
 cd /tmp/
 

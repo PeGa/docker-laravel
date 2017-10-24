@@ -1,13 +1,54 @@
 #!/bin/bash
+
+# Definition of required tools and helpers for development
+
+packageList="
+apt-file
+apt-transport-https
+apt-utils
+aptitude
+aria2
+axel
+bash-completion
+bind9utils
+build-essential
+bwm-ng
+cmake
+colordiff
+curl
+dialog
+dstat
+geoip-bin
+geoip-database-contrib
+htop
+iftop
+iptraf
+less
+locales
+locate
+logrotate
+lsb-release
+mailutils
+man-db
+mc
+ncdu
+nmap
+openssh-client
+openssh-server
+pkg-config
+psmisc
+rcconf
+rsync
+ssmtp
+strace
+tmux
+vim
+whois
+"
+
 cd /tmp 
-apt update
-apt install git wget -y 
-git clone https://github.com/pega/server-setup
-cd server-setup/debian-stretch/scripts/ 
-./install-repos.sh
-./install-basetools.sh
-cd /tmp
-wget https://repo.percona.com/apt/percona-release_0.1-4.$(lsb_release -sc)_all.deb
-dpkg -i percona-release_0.1-4.$(lsb_release -sc)_all.deb
-apt update
 apt full-upgrade -y
+
+# Remember, percona-sever repositories are already installed!
+
+apt install -y $packageList
