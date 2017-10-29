@@ -1,10 +1,8 @@
 FROM debian:stretch
 MAINTAINER PeGa! <dev@pega.sh>
-
 # - Main / Contrib / Non-free repositories
 # - stretch-backports enabled
 # - (Disabled) Docker repositories
-
 ADD	build/config/repos/apt/* /etc/apt/
 
 # Adds external scripts for setup and configuration:
@@ -15,10 +13,6 @@ ADD	build/config/repos/apt/* /etc/apt/
 # - setup-laravel-env.sh
 
 ADD	build/scripts/* /tmp/
-
-# We can't install percona-server repositories earlier in the process without hardcoding
-# the required values in sources.list, so we're going to install the official repositories
-# first of all in the whole setup process.
 
 RUN	/tmp/base-setup.sh && \
 	/tmp/bin/install-web-services-dependencies.sh && \
