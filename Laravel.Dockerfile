@@ -15,8 +15,8 @@ ADD	build/config/repos/apt/* /etc/apt/
 ADD	build/scripts/* /tmp/
 
 RUN	/tmp/base-setup.sh && \
-	/tmp/bin/install-web-services-dependencies.sh && \
-	/tmp/bin/setup-laravel-env.sh
+	/tmp/install-web-services-dependencies.sh && \
+	/tmp/setup-laravel-env.sh
 
 # Adding custom configurations to Nginx and PHP
 
