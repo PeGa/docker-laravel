@@ -18,6 +18,7 @@ esac
 
 packageListprod="
 git
+wget
 curl
 "
 
@@ -64,7 +65,9 @@ vim
 whois
 "
 
-# Remember, percona-sever repositories are already installed!
+# We want an updated system
+
+apt update && apt full-upgrade -y
 
 if [ "prod" = "$ENV" ]; then
 	apt install -y $packageListprod
